@@ -26,7 +26,6 @@ public class PlanetGravity : MonoBehaviour {
             var forceNumerator = rb.mass * gravConst *planetMass;
             var force = forceNumerator / distSquared;
 
-            rb.useGravity = false;
             rb.AddForce(direction * force);
         }
 	}
@@ -34,6 +33,7 @@ public class PlanetGravity : MonoBehaviour {
     private void OnTriggerEnter(Collider collider) {
         moon = collider.gameObject;
         rb = moon.GetComponent<Rigidbody>();
+        rb.useGravity = false;
         // Debug.Log("planet trigger entered");
     }
 
